@@ -1,7 +1,7 @@
 const Page = () => {
-    return(
+    return (
         <div>
-            Test page!
+            Only auth and org can see me!!
         </div>
     );
 }
