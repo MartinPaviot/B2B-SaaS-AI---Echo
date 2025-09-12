@@ -17,6 +17,9 @@ import { userAgent } from "next/server";
 import { Languages } from "lucide-react";
 import { time } from "console";
 import { Doc } from "@workspace/backend/_generated/dataModel";
+import { organizationIdAtom } from "../../atoms/widget-atoms";
+import { useSetAtom,useAtomValue, } from "jotai";
+import { contactSessionIdAtomFamily } from "../../atoms/widget-atoms";
 
 const formSchema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -26,7 +29,11 @@ const formSchema = z.object({
 //Temporary test organizationId, before we add state management
 const organizationId = "123";
 
-export const WidgetAuthScreen = () => {
+export const WidgetAuthScreen = () => { 
+    const organizationId = useAtomValue(organizationIdAtom);
+    const setContactSessionId = useSetAtom(contactSessionIdAtomFamily(organizationId || "")
+    );
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -63,7 +70,7 @@ export const WidgetAuthScreen = () => {
             metadata,
         });
 
-        console.log({ contactSessionId });
+        setContactSessionId(contactSessionId);
     };    
 
     return (
