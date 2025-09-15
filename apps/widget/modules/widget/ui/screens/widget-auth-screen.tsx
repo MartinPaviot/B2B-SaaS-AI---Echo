@@ -1,4 +1,4 @@
-import {z} from "zod";
+import {set, z} from "zod";
 import {useForm} from "react-hook-form";
 import{zodResolver} from "@hookform/resolvers/zod";
 import {
@@ -17,7 +17,7 @@ import { userAgent } from "next/server";
 import { Languages } from "lucide-react";
 import { time } from "console";
 import { Doc } from "@workspace/backend/_generated/dataModel";
-import { organizationIdAtom } from "../../atoms/widget-atoms";
+import { organizationIdAtom, screenAtom } from "../../atoms/widget-atoms";
 import { useSetAtom,useAtomValue, } from "jotai";
 import { contactSessionIdAtomFamily } from "../../atoms/widget-atoms";
 
@@ -26,10 +26,11 @@ const formSchema = z.object({
     email: z.string().email("Invalid email address"),
 });
 
-//Temporary test organizationId, before we add state management
-const organizationId = "123";
+
 
 export const WidgetAuthScreen = () => { 
+    const setScreen = useSetAtom(screenAtom);
+
     const organizationId = useAtomValue(organizationIdAtom);
     const setContactSessionId = useSetAtom(contactSessionIdAtomFamily(organizationId || "")
     );
@@ -71,6 +72,7 @@ export const WidgetAuthScreen = () => {
         });
 
         setContactSessionId(contactSessionId);
+        setScreen("selection");
     };    
 
     return (
