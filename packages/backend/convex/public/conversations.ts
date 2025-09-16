@@ -3,11 +3,12 @@ import { ConvexError, v } from "convex/values";
 import { supportAgent } from "../system/ai/agents/supportAgent";
 import { MessageDoc, saveMessage } from "@convex-dev/agent";
 import { components } from "../_generated/api";
+import { paginationOptsValidator } from "convex/server";
 
 export const getMany = query({
     args: {
         contactSessionId: v.id("contactSessions"),
-        paginationOpts: v.any(), // You may want to use a more specific validator depending on your pagination options structure
+        paginationOpts: paginationOptsValidator, // You may want to use a more specific validator depending on your pagination options structure
     },
 
     handler: async (ctx, args) => {
