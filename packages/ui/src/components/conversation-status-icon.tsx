@@ -13,7 +13,7 @@ const statusConfig = {
     },
     unresolved:{
         icon: ArrowRightIcon,
-        bgColor: "bg-[#FFB800]",    
+        bgColor: "bg-red-500",    
     },
     escalated:{
         icon: ArrowUpIcon,
