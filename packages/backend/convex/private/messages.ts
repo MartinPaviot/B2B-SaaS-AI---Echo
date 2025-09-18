@@ -91,6 +91,12 @@ export const enhanceResponse = action ({
                     message: "Conversation is resolved",
                 });
             }
+
+            if (conversation.status === "unresolved"){
+                await ctx.db.patch(args.conversationId, { 
+                    status: "escalated" 
+                });
+            }
             
             await saveMessage(ctx, components.agent, {
                 threadId: conversation.threadId,
