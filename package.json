@@ -21,5 +21,15 @@
   },
   "dependencies": {
     "@convex-dev/rag": "0.3.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@clerk/shared",
+      "@sentry/cli",
+      "@tailwindcss/oxide",
+      "core-js-pure",
+      "esbuild",
+      "sharp"
+    ]
   }
 }
