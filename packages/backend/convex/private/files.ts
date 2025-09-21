@@ -12,7 +12,7 @@ import { extractTextContent } from "../lib/extractTextContent";
 import rag from "../system/ai/rag";
 import { Id } from "../_generated/dataModel";
 import { paginationOptsValidator } from "convex/server";
-import { toLowerCase } from "zod/v4";
+
 
 function guessMimeType (filename: string, bytes: ArrayBuffer): string {
     return (
