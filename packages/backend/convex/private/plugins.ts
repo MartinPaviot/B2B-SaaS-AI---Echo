@@ -1,6 +1,7 @@
 import {v} from "convex/values";
 import {mutation, query} from "../_generated/server";
 import { ConvexError } from "convex/values";
+import { internal } from "../_generated/api";
 
 export const remove = mutation({
     args: {
@@ -59,6 +60,20 @@ export const getOne = query({
             throw new ConvexError({
                 code: "UNAUTHORIZED",
                 message: "Organization not found",
+            });
+        }
+
+        const subscription = await ctx.runQuery(
+            internal.system.subscriptions.getByOrganizationId,
+            {
+                organizationId: orgId,
+            },
+        );
+
+        if (subscription?.status !== "active") {
+            throw new ConvexError({
+                code: "BAD_REQUEST",
+                message: "Missing subscription",
             });
         }
 
