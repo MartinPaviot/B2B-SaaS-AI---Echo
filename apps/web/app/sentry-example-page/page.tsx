@@ -40,8 +40,8 @@ export default function Page() {
         </h1>
 
         <p className="description">
-          Click the button below, and view the sample error on the Sentry <a target="_blank" href="https://echo-7w.sentry.io/issues/?project=4509991499071568">Issues Page</a>.
-          For more details about setting up Sentry, <a target="_blank"
+          Click the button below, and view the sample error on the Sentry <a target="_blank" rel="noreferrer noopener" href="https://echo-7w.sentry.io/issues/?project=4509991499071568">Issues Page</a>.
+          For more details about setting up Sentry, <a target="_blank" rel="noreferrer noopener"
            href="https://docs.sentry.io/platforms/javascript/guides/nextjs/">read our docs</a>.
         </p>
 

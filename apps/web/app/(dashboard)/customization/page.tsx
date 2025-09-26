@@ -1,7 +1,6 @@
 import { Protect } from "@clerk/nextjs";
 import { PremiumFeatureOverlay } from "@/modules/billing/ui/components/premium-feature-overlay";
 import { CustomizationView } from "@/modules/customization/ui/views/customization-view";
-import { Files } from "lucide-react";
 
 const Page =() => {
     return (
